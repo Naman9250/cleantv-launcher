@@ -19,15 +19,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
+      - name: Setup Gradle 8.5
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.5'
 
       - name: Build Debug APK
-        env:
-          ANDROID_HOME: /usr/local/lib/android/sdk
-        run: |
-          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          gradle assembleDebug --stacktrace
+        run: /home/runner/.gradle/wrapper/dists/*/*/gradle-8.5/bin/gradle assembleDebug --stacktrace --no-daemon || gradle assembleDebug --stacktrace --no-daemon
 
       - name: Upload CleanTV Launcher APK
         uses: actions/upload-artifact@v4
