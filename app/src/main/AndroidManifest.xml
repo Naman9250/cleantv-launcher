@@ -24,7 +24,6 @@
             android:exported="true"
             android:banner="@android:drawable/sym_def_app_icon"
             android:launchMode="singleTask"
-            android:clearTaskOnReset="true"
             android:stateNotNeeded="true"
             android:screenOrientation="landscape">
 
